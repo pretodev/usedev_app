@@ -6,6 +6,9 @@ import 'package:provider/provider.dart';
 import '../../../business/category/category.dart';
 import '../../../business/category/category_failure.dart';
 import '../../../business/category/category_repository.dart';
+import '../../../business/product/product.dart';
+import '../../../business/product/product_failure.dart';
+import '../../../business/product/product_repository.dart';
 import '../../../initialize.dart';
 import '../../commom/svg_icon.dart';
 import '../../styles/styles.dart';
@@ -15,6 +18,7 @@ part 'home_state.dart';
 part 'widgets/_banner.dart';
 part 'widgets/_categories.dart';
 part 'widgets/_footer.dart';
+part 'widgets/_promotional_products.dart';
 part 'widgets/_searcher.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -23,7 +27,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => HomeController()..loadCategories(),
+      create: (_) => HomeController()..loadInitialData(),
       child: Scaffold(
         body: CustomScrollView(
           slivers: [
@@ -64,6 +68,9 @@ class HomeScreen extends StatelessWidget {
             ),
             const SliverToBoxAdapter(
               child: _Categories(),
+            ),
+            const SliverToBoxAdapter(
+              child: _PromotionalProducts(),
             ),
             const SliverToBoxAdapter(
               child: _Footer(),
