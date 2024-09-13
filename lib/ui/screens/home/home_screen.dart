@@ -18,6 +18,7 @@ part 'home_state.dart';
 part 'widgets/_banner.dart';
 part 'widgets/_categories.dart';
 part 'widgets/_footer.dart';
+part 'widgets/_form.dart';
 part 'widgets/_promotional_products.dart';
 part 'widgets/_searcher.dart';
 
@@ -71,6 +72,9 @@ class HomeScreen extends StatelessWidget {
             ),
             const SliverToBoxAdapter(
               child: _PromotionalProducts(),
+            ),
+            const SliverToBoxAdapter(
+              child: _Form(),
             ),
             const SliverToBoxAdapter(
               child: _Footer(),
