@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 
 import 'initialize.dart';
+import 'ui/screens/home/home_screen.dart';
+import 'ui/styles/styles.dart';
 
 void main() async {
-  initializeApp(() => const MainApp());
+  initializeApp(() => const UseDevApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class UseDevApp extends StatelessWidget {
+  const UseDevApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      theme: AppStyle().theme,
+      home: const HomeScreen(),
     );
   }
 }
