@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'business/category/category_repository.dart';
+import 'data/usedev_api/client/usedev_client.dart';
+import 'data/usedev_api/usedev_category_repository.dart';
 import 'initialize.dart';
 import 'ui/screens/home/home_screen.dart';
 import 'ui/styles/styles.dart';
 
 void main() async {
-  initializeApp(() => const UseDevApp());
+  initializeApp((i) {
+    i.addLazySingleton(UsedevClient.new);
+    i.addLazySingleton<CategoryRepository>(UsedevCategoryRepository.new);
+    return const UseDevApp();
+  });
 }
 
 class UseDevApp extends StatelessWidget {
