@@ -13,9 +13,8 @@ class UsedevProductRepository implements ProductRepository {
 
   @override
   AsyncResult<List<Product>, ProductFailure> getProducts() async {
-    final result = await _client.get(
-      '/946cbbc91d0bc0e167eb6fd895a6b12a/raw/0f6661903360535587ebe583b959e84192cdb771/usedev-produtos.json',
-    );
+    final result = await _client
+        .get(const String.fromEnvironment('USEDEV_PRODUCTS_JSON_URL'));
     final products = (result['produtos'] as Iterable)
         .map(
           (e) => Product(

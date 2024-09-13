@@ -12,9 +12,8 @@ class UsedevCategoryRepository implements CategoryRepository {
 
   @override
   AsyncResult<List<Category>, CategoryFailure> getCategories() async {
-    final result = await _client.get(
-      '/68bc50d055acb4ecc7356180131df477/raw/14369c7e25fca54941f5359299b3f4f118a573d6/usedev-categorias.json',
-    );
+    final result = await _client
+        .get(const String.fromEnvironment('USEDEV_CATEGORIES_JSON_URL'));
     final categories = (result['categorias'] as Iterable)
         .map(
           (e) => Category(id: e['id'], name: e['nome'], imageUrl: e['imagem']),
