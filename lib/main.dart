@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MainApp());
+import 'initialize.dart';
+
+void main() async {
+  initializeApp(() => const MainApp());
 }
 
 class MainApp extends StatelessWidget {
