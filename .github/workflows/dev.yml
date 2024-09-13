@@ -1,0 +1,45 @@
+name: UseDev CI pipeline
+
+on:
+  push:
+    branches:
+    - dev
+  pull_request:
+    branches:
+    - dev
+
+jobs:
+  build_distribution:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'oracle'
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.24.3'
+      
+      - name: Add google-service.json file
+        run: |
+          echo "${{ secrets.GOOGLE_SERVICE_JSON_BASE64 }}" | base64 --decode > android/app/google-services.json
+      - name: Add env.prerelease.json file
+        run: |
+          echo "${{ secrets.ENV_PRE_RELEASE_JSON_BASE64 }}" | base64 --decode > env.prerelease.json
+          
+      - name: Build Android Bundle
+        run: flutter pub get
+      - run: flutter analyze
+      - run: flutter build appbundle --release --dart-define-from-file=env.prerelease.json
+      
+      - name: Upload Android Bundle to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          token: ${{ secrets.FIRBEASE_TOKEN }}
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          groups: testers
+          file: build/app/outputs/bundle/release/app-release.aab
