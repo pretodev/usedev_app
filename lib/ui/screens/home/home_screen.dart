@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart' as foundation;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../business/category/category.dart';
 import '../../../business/category/category_failure.dart';
@@ -9,6 +10,7 @@ import '../../../business/category/category_repository.dart';
 import '../../../business/product/product.dart';
 import '../../../business/product/product_failure.dart';
 import '../../../business/product/product_repository.dart';
+import '../../../config/contact.dart';
 import '../../../initialize.dart';
 import '../../commom/svg_icon.dart';
 import '../../styles/styles.dart';

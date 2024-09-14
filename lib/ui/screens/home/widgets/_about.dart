@@ -5,6 +5,8 @@ class _About extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final contact = context.read<Contact>();
+
     return Container(
       padding: const EdgeInsets.all(60.0),
       color: context.appColors.darkBlue,
@@ -38,7 +40,7 @@ class _About extends StatelessWidget {
           ),
           const SizedBox(height: 16.0),
           Text(
-            'Segunda à Sexta - 8h às 18h',
+            'Segunda à Sexta - ${contact.openingHours.$1} às ${contact.openingHours.$2}',
             textAlign: TextAlign.left,
             style: context.appTextStyles.bodySmall.copyWith(
               color: Colors.white,
@@ -46,7 +48,7 @@ class _About extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           Text(
-            'sac@usedev.com.br',
+            contact.email,
             textAlign: TextAlign.left,
             style: context.appTextStyles.bodySmall.copyWith(
               color: Colors.white,
@@ -54,7 +56,7 @@ class _About extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           Text(
-            '0800 541 320',
+            contact.phone,
             textAlign: TextAlign.left,
             style: context.appTextStyles.bodySmall.copyWith(
               color: Colors.white,
@@ -97,7 +99,9 @@ class _About extends StatelessWidget {
                   SocialIcons.whatsapp.name,
                   size: 36.0,
                 ),
-                onPressed: () {},
+                onPressed: () => launchUrl(
+                  Uri.parse(contact.socialMediaLinks.whatsapp),
+                ),
               ),
               const SizedBox(width: 4.0),
               IconButton(
@@ -105,7 +109,9 @@ class _About extends StatelessWidget {
                   SocialIcons.instagram.name,
                   size: 36.0,
                 ),
-                onPressed: () {},
+                onPressed: () => launchUrl(
+                  Uri.parse(contact.socialMediaLinks.instagram),
+                ),
               ),
               const SizedBox(width: 4.0),
               IconButton(
@@ -113,7 +119,9 @@ class _About extends StatelessWidget {
                   SocialIcons.tiktok.name,
                   size: 36.0,
                 ),
-                onPressed: () {},
+                onPressed: () => launchUrl(
+                  Uri.parse(contact.socialMediaLinks.tiktok),
+                ),
               ),
             ],
           ),

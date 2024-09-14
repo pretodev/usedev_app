@@ -57,6 +57,7 @@ class DefaultFirebaseOptions {
     appId: '1:231612040213:android:5b7b3fcadf029c82bd3a1c',
     messagingSenderId: '231612040213',
     projectId: 'usedev-app',
+    databaseURL: 'https://usedev-app-default-rtdb.firebaseio.com',
     storageBucket: 'usedev-app.appspot.com',
   );
 }
