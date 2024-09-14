@@ -15,6 +15,7 @@ import '../../styles/styles.dart';
 
 part 'home_controller.dart';
 part 'home_state.dart';
+part 'widgets/_about.dart';
 part 'widgets/_banner.dart';
 part 'widgets/_categories.dart';
 part 'widgets/_footer.dart';
@@ -75,6 +76,9 @@ class HomeScreen extends StatelessWidget {
             ),
             const SliverToBoxAdapter(
               child: _Form(),
+            ),
+            const SliverToBoxAdapter(
+              child: _About(),
             ),
             const SliverToBoxAdapter(
               child: _Footer(),

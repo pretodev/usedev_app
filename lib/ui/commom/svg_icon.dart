@@ -21,7 +21,29 @@ class SvgIcon extends StatelessWidget {
       'assets/icons/$name.svg',
       height: size,
       width: size,
-      colorFilter: color?.colorFilter ?? context.appColors.darkBlue.colorFilter,
+      colorFilter: color?.colorFilter,
     );
   }
+}
+
+enum PaymentIcons {
+  visa('ico_cartao_visa'),
+  mastercard('ico_cartao_master'),
+  elo('ico_cartao_elo'),
+  diners('ico_cartao_diners'),
+  pix('ico_pix');
+
+  final String name;
+
+  const PaymentIcons(this.name);
+}
+
+enum SocialIcons {
+  whatsapp('whatsapp'),
+  instagram('instagram'),
+  tiktok('tiktok');
+
+  final String name;
+
+  const SocialIcons(this.name);
 }
