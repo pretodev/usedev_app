@@ -14,6 +14,7 @@ import '../../../config/contact.dart';
 import '../../../initialize.dart';
 import '../../commom/svg_icon.dart';
 import '../../styles/styles.dart';
+import 'discount_subscription/discount_subscription_view.dart';
 
 part 'home_controller.dart';
 part 'home_state.dart';
@@ -21,7 +22,6 @@ part 'widgets/_about.dart';
 part 'widgets/_banner.dart';
 part 'widgets/_categories.dart';
 part 'widgets/_footer.dart';
-part 'widgets/_form.dart';
 part 'widgets/_promotional_products.dart';
 part 'widgets/_searcher.dart';
 
@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
               child: _PromotionalProducts(),
             ),
             const SliverToBoxAdapter(
-              child: _Form(),
+              child: DiscountSubscriptionView(),
             ),
             const SliverToBoxAdapter(
               child: _About(),

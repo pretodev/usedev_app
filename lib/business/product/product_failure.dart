@@ -1,4 +1,4 @@
-import '../failure/failure.dart';
+import '../commom/failure.dart';
 
 class ProductFailure extends Failure {
   const ProductFailure(super.message);
