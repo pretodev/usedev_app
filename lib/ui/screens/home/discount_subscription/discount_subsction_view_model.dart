@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:result_dart/result_dart.dart';
-import 'package:signals_flutter/signals_flutter.dart';
 
 import '../../../../business/commom/values/email.dart';
 import '../../../../business/subscription/subscription_repository.dart';
@@ -14,9 +13,9 @@ class DiscountSubsctionViewModel extends ViewModel with ServiceLocatorMixin {
   });
 
   final VoidCallback? onSubscribeSuccess;
-  late final _subscription = this.createSignal(const AsyncValue.data(unit));
+  late final _subscription = createSignal(const AsyncValue.data(unit));
 
-  late final isLoading = computed(() => _subscription.value.isLoading);
+  bool get isLoading => _subscription.value.isLoading;
 
   Email? _email;
 

@@ -109,7 +109,7 @@ class _DiscountSubscriptionViewState extends State<DiscountSubscriptionView>
             ),
             const SizedBox(height: 16.0),
             Visibility(
-              visible: !viewModel.isLoading.value,
+              visible: !viewModel.isLoading,
               replacement: const FilledButton(
                 onPressed: null,
                 child: Text('Aguarde um instante'),
