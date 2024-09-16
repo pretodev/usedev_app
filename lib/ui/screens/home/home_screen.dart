@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../commom/sliver/sliver_seach_header_delegate.dart';
 import '../../commom/svg_icon.dart';
 import '../../styles/styles.dart';
+import '../search/search_screen.dart';
 import 'categories/categories_view.dart';
 import 'discount_subscription/discount_subscription_view.dart';
 import 'promotion_products/promotional_products_view.dart';
 import 'widgets/home_about.dart';
 import 'widgets/home_banner.dart';
 import 'widgets/home_footer.dart';
-import 'widgets/home_searcher.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -49,7 +50,12 @@ class HomeScreen extends StatelessWidget {
             surfaceTintColor: Colors.white,
           ),
           SliverPersistentHeader(
-            delegate: HomeSearcher(),
+            delegate: SliverSeachHeaderDelegate(
+              staticMode: true,
+              onClicked: () => {
+                SearchScreen.push(context),
+              },
+            ),
             pinned: true,
           ),
           const SliverToBoxAdapter(
