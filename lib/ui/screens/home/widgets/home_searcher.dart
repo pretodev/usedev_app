@@ -1,6 +1,8 @@
-part of '../home_screen.dart';
+import 'package:flutter/material.dart';
 
-class _Searcher extends SliverPersistentHeaderDelegate {
+import '../../../styles/styles.dart';
+
+class HomeSearcher extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
     BuildContext context,

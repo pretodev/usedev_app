@@ -1,7 +1,9 @@
-part of '../home_screen.dart';
+import 'package:flutter/material.dart';
 
-class _Footer extends StatelessWidget {
-  const _Footer({super.key});
+import '../../../styles/styles.dart';
+
+class HomeFooter extends StatelessWidget {
+  const HomeFooter({super.key});
 
   @override
   Widget build(BuildContext context) {

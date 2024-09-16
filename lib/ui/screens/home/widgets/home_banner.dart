@@ -1,7 +1,9 @@
-part of '../home_screen.dart';
+import 'package:flutter/material.dart';
 
-class _Banner extends StatelessWidget {
-  const _Banner({super.key});
+import '../../../styles/styles.dart';
+
+class HomeBanner extends StatelessWidget {
+  const HomeBanner({super.key});
 
   @override
   Widget build(BuildContext context) {

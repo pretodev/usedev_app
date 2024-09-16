@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-import '../../../config/contact.dart';
 import '../../commom/svg_icon.dart';
 import '../../styles/styles.dart';
 import 'categories/categories_view.dart';
 import 'discount_subscription/discount_subscription_view.dart';
 import 'promotion_products/promotional_products_view.dart';
-
-part 'widgets/_about.dart';
-part 'widgets/_banner.dart';
-part 'widgets/_footer.dart';
-part 'widgets/_searcher.dart';
+import 'widgets/home_about.dart';
+import 'widgets/home_banner.dart';
+import 'widgets/home_footer.dart';
+import 'widgets/home_searcher.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -52,11 +48,11 @@ class HomeScreen extends StatelessWidget {
             centerTitle: true,
           ),
           SliverPersistentHeader(
-            delegate: _Searcher(),
+            delegate: HomeSearcher(),
             pinned: true,
           ),
           const SliverToBoxAdapter(
-            child: _Banner(),
+            child: HomeBanner(),
           ),
           const SliverToBoxAdapter(
             child: CategoriesView(),
@@ -68,10 +64,10 @@ class HomeScreen extends StatelessWidget {
             child: DiscountSubscriptionView(),
           ),
           const SliverToBoxAdapter(
-            child: _About(),
+            child: HomeAbout(),
           ),
           const SliverToBoxAdapter(
-            child: _Footer(),
+            child: HomeFooter(),
           ),
         ],
       ),

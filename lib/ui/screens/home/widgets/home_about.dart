@@ -1,7 +1,14 @@
-part of '../home_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class _About extends StatelessWidget {
-  const _About({super.key});
+import '../../../../config/contact.dart';
+import '../../../commom/svg_icon.dart';
+import '../../../styles/styles.dart';
+
+class HomeAbout extends StatelessWidget {
+  const HomeAbout({super.key});
 
   @override
   Widget build(BuildContext context) {
