@@ -1,6 +1,5 @@
 import 'package:result_dart/result_dart.dart';
 
-import '../../business/category/category.dart';
 import '../../business/product/product.dart';
 import '../../business/product/product_failure.dart';
 import '../../business/product/product_repository.dart';
@@ -13,20 +12,15 @@ class UsedevProductRepository implements ProductRepository {
 
   @override
   AsyncResult<List<Product>, ProductFailure> getProducts() async {
-    final result = await _client
-        .get(const String.fromEnvironment('USEDEV_PRODUCTS_JSON_URL'));
-    final products = (result['produtos'] as Iterable)
-        .map(
-          (e) => Product(
-            id: e['id'],
-            name: e['nome'],
-            imageUrl: e['imagem'],
-            price: e['preço'],
-            category: Category(id: e['categoriaId'], name: '', imageUrl: ''),
-          ),
-        )
-        .toList();
-    return Result.success(products);
+    final products = await _client.getProducts();
+    final categories = await _client.getCategories();
+    final productsWithCategories = products.map((product) {
+      final category = categories.firstWhere(
+        (category) => category.id == product.category.id,
+      );
+      return product.copyWith(category: category);
+    }).toList();
+    return Result.success(productsWithCategories);
   }
 
   @override
