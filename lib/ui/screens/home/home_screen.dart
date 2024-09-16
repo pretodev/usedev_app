@@ -46,6 +46,7 @@ class HomeScreen extends StatelessWidget {
             floating: true,
             snap: true,
             centerTitle: true,
+            surfaceTintColor: Colors.white,
           ),
           SliverPersistentHeader(
             delegate: HomeSearcher(),
