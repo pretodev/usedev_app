@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../business/category/category.dart';
@@ -8,6 +9,7 @@ import '../../state/view_model_mixin.dart';
 import '../../styles/styles.dart';
 import 'search_view_model.dart';
 import 'widgets/seach_product_card.dart';
+import 'widgets/search_blank_content.dart';
 
 class SearchScreen extends StatefulWidget {
   static Future<void> push(
@@ -58,6 +60,22 @@ class _SearchScreenState extends State<SearchScreen>
             ),
             pinned: true,
           ),
+          if (viewModel.isBlank)
+            const SliverFillRemaining(
+              hasScrollBody: false,
+              child: SearchBlankContent(),
+            ),
+          if (viewModel.noResults)
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Center(
+                child: SizedBox(
+                  width: 172.0,
+                  height: 172.0,
+                  child: Lottie.asset('assets/lotties/no_results.json'),
+                ),
+              ),
+            ),
 
           SliverGrid(
             delegate: viewModel.isLoading
