@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../business/category/category.dart';
@@ -25,8 +26,8 @@ class CategoryCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 24.0),
       child: Column(
         children: [
-          Image.network(
-            category.imageUrl,
+          CachedNetworkImage(
+            imageUrl: category.imageUrl,
             height: 253,
             width: double.infinity,
             fit: BoxFit.cover,

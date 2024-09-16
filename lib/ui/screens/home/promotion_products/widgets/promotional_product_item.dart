@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../business/product/product.dart';
@@ -25,8 +26,8 @@ class PromotionalProductItem extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Image.network(
-            product.imageUrl,
+          CachedNetworkImage(
+            imageUrl: product.imageUrl,
             height: 253,
             width: double.infinity,
             fit: BoxFit.cover,
