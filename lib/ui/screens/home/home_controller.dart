@@ -5,7 +5,6 @@ class HomeController extends ValueNotifier<HomeState> with ServiceLocatorMixin {
 
   void loadInitialData() {
     loadCategories();
-    loadPromotionalProducts();
   }
 
   void loadCategories() async {
@@ -19,23 +18,6 @@ class HomeController extends ValueNotifier<HomeState> with ServiceLocatorMixin {
     }, (failure) {
       value = value.copyWith(
         categoriesFailure: () => failure,
-        isLoadingCategories: false,
-      );
-    });
-  }
-
-  void loadPromotionalProducts() async {
-    value = value.copyWith(isLoadingPromotionalProducts: true);
-    final result =
-        await getService<ProductRepository>().getPromotionalProducts();
-    result.fold((products) {
-      value = value.copyWith(
-        promotionalProducts: products,
-        isLoadingPromotionalProducts: false,
-      );
-    }, (failure) {
-      value = value.copyWith(
-        promotionalProductsFailure: () => failure,
         isLoadingCategories: false,
       );
     });
