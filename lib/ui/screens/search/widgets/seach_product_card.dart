@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../business/product/product.dart';
+import '../../../commom/counter.dart';
 import '../../../styles/styles.dart';
 
 class SeachProductCard extends StatelessWidget {
@@ -62,6 +63,8 @@ class SeachProductCard extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
+                const SizedBox(height: 8.0),
+                const Counter(),
               ],
             ),
           ),
