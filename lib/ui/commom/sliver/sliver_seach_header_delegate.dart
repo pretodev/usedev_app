@@ -7,12 +7,14 @@ class SliverSeachHeaderDelegate extends SliverPersistentHeaderDelegate {
   final bool staticMode;
   final bool autofocus;
   final bool backButton;
+  final ValueChanged<String>? onChanged;
 
   SliverSeachHeaderDelegate({
     this.onClicked,
     this.staticMode = false,
     this.autofocus = false,
     this.backButton = false,
+    this.onChanged,
   });
 
   @override
@@ -33,6 +35,7 @@ class SliverSeachHeaderDelegate extends SliverPersistentHeaderDelegate {
           child: TextField(
             textAlign: TextAlign.center,
             autofocus: autofocus,
+            onChanged: onChanged,
             decoration: InputDecoration(
               border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(32.0)),

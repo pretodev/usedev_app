@@ -33,4 +33,22 @@ class UsedevProductRepository implements ProductRepository {
       },
     );
   }
+
+  @override
+  AsyncResult<List<Product>, ProductFailure> searchProducts(
+    String query,
+  ) async {
+    final result = await getProducts();
+    return result.map(
+      (products) {
+        return products.where((product) {
+          final matchesName =
+              product.name.toLowerCase().contains(query.toLowerCase());
+          final matchesCategory =
+              product.category.name.toLowerCase().contains(query.toLowerCase());
+          return matchesName || matchesCategory;
+        }).toList();
+      },
+    );
+  }
 }
